@@ -1,0 +1,185 @@
+/* Variables de color basadas en el logo */
+:root {
+  --azul-oscuro: #0A3A5A; /* Azul de fondo del logo */
+  --azul-claro: #00C9E0;  /* Celeste de las letras y burbujas */
+  --blanco: #FFFFFF;
+  --gris-fondo: #f4f8fa;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; line-height: 1.6; }
+
+/* NAVBAR */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; background: var(--azul-oscuro); color: var(--blanco);
+  position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.navbar a { color: var(--blanco); text-decoration: none; font-weight: 500; }
+.nav-menu { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+.nav-menu li { position: relative; }
+
+.dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: var(--azul-oscuro); list-style: none; min-width: 250px; 
+  padding: .5rem 0; border-radius: 0 0 8px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li a { display: block; padding: .7rem 1.2rem; transition: background 0.2s; }
+.dropdown-menu li a:hover { background: var(--azul-claro); color: var(--azul-oscuro); }
+
+/* HERO */
+.hero {
+  min-height: 70vh; display: flex; align-items: center; justify-content: center;
+  background-size: cover; background-position: center; position: relative; text-align: center;
+}
+/* Efecto oscuro sobre la foto de fondo para que el texto resalte */
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 58, 90, 0.7); 
+}
+.hero-overlay { position: relative; z-index: 1; color: var(--blanco); padding: 2rem; }
+.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--blanco); }
+.hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+
+/* BOTONES */
+.btn {
+  display: inline-block; background: var(--azul-claro); color: var(--azul-oscuro);
+  padding: 1rem 2rem; border-radius: 50px; text-decoration: none;
+  font-weight: bold; font-size: 1.1rem; transition: transform 0.2s;
+}
+.btn:hover { transform: scale(1.05); background: #00b0c4; }
+.btn-small { color: var(--azul-claro); font-weight: bold; text-decoration: none; }
+
+/* SECCIÓN BIENVENIDA */
+.bienvenida {
+  display: flex; align-items: center; gap: 3rem; padding: 5rem 2rem;
+  max-width: 1100px; margin: auto;
+}
+.bienvenida-texto { flex: 1; }
+.bienvenida-texto h2 { color: var(--azul-oscuro); font-size: 2.5rem; margin-bottom: 1rem; }
+.bienvenida-imagen { flex: 1; }
+.bienvenida-imagen img {
+  width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* SECCIÓN CURSOS (Tarjetas) */
+.cursos-resumen { background: var(--gris-fondo); padding: 5rem 2rem; text-align: center; }
+.cursos-resumen h2 { color: var(--azul-oscuro); font-size: 2.5rem; margin-bottom: 3rem; }
+.grid-cursos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; max-width: 1100px; margin: auto;
+}
+.curso-card {
+  background: var(--blanco); padding: 2rem; border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--azul-claro);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.curso-card h3 { color: var(--azul-oscuro); margin-bottom: 1rem; }
+.curso-card p { margin-bottom: 1.5rem; color: #666; }
+
+/* FOOTER */
+footer { background: var(--azul-oscuro); color: var(--blanco); text-align: center; padding: 2rem; }
+
+/* MÓVIL */
+@media (max-width: 768px) {
+  .bienvenida { flex-direction: column; text-align: center; }
+  .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--azul-oscuro); padding: 1rem 0;}
+  .nav-menu.active { display: flex; }
+  .menu-toggle { display: block; background: none; border: none; color: var(--blanco); font-size: 1.5rem; cursor: pointer;}
+  .dropdown-menu { position: static; box-shadow: none; }
+  .hero h1 { font-size: 2.5rem; }
+}
+
+/* ESTILOS PARA PÁGINAS INTERNAS (Quiénes somos y Contacto) */
+.pagina-contenido {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+  min-height: 60vh; /* Para que el footer no se suba si hay poco texto */
+}
+
+.pagina-contenido h1 {
+  color: var(--azul-oscuro);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Estilos para las tarjetas de contacto */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contacto-card {
+  background: var(--gris-fondo);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  border-top: 5px solid var(--azul-claro);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contacto-card h3 {
+  color: var(--azul-oscuro);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.contacto-card p {
+  margin-bottom: 0.8rem;
+  color: #555;
+}
+
+/* ESTILOS ESPECÍFICOS PARA PÁGINAS DE CURSOS */
+.curso-detalle {
+  max-width: 800px; /* Hace que el texto sea más fácil de leer */
+}
+
+.curso-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.curso-detalle .intro {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--azul-oscuro);
+  margin-bottom: 2rem;
+}
+
+.curso-detalle h3 {
+  color: var(--azul-oscuro);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.curso-detalle ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.curso-detalle li {
+  margin-bottom: 0.5rem;
+}
+
+.aviso-box {
+  background: var(--gris-fondo);
+  padding: 1.5rem;
+  border-left: 5px solid var(--azul-claro);
+  border-radius: 5px;
+  margin: 2rem 0;
+}
+
+.curso-detalle .btn {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
